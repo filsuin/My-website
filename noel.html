@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Joyeux Noël</title>
+    <!-- Inclusion de Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
+    <!-- Lien vers le fichier CSS -->
+    <link rel="stylesheet" href="assets/css/noel.css">
+</head>
+<body>
+    <div class="wrapper">
+        <!-- En-tête Festif -->
+        <header>
+            <h1>Joyeux Noël !</h1>
+            <p>Bienvenue à notre célébration de Noël en ligne</p>
+        </header>
+
+        <!-- Compte à Rebours -->
+        <div class="countdown" id="countdown"></div>
+
+        <!-- Encart pour la liste au Père Noël -->
+        <div class="wishlist-container">
+            <h2>Ma Liste au Père Noël</h2>
+            <textarea id="wishlist" placeholder="Cher Père Noël, cette année j'aimerais..." oninput="formatWishlist()"></textarea>
+            <button onclick="sendWishlist()">Envoyer</button>
+        </div>
+
+        <!-- Effets Visuels -->
+        <div class="snowflakes" aria-hidden="true">
+            <div class="snowflake">❅</div>
+            <div class="snowflake">❆</div>
+            <div class="snowflake">❅</div>
+            <div class="snowflake">❆</div>
+            <div class="snowflake">❅</div>
+            <div class="snowflake">❆</div>
+            <div class="snowflake">❅</div>
+            <div class="snowflake">❆</div>
+        </div>
+        <!-- Lien pour retourner à l'accueil -->
+        <a href="index.html" class="button">Retour à l'accueil</a>
+    </div>
+
+    <!-- Footer Festif -->
+    <footer>
+        <p>&copy; 2024 - Tous droits réservés. Joyeux Noël !</p>
+    </footer>
+
+    <!-- Son du Père Noël qui rit -->
+    <audio id="santaLaugh" src="assets/audio/santa-laugh.mp3" preload="auto"></audio>
+
+    <!-- Lien vers le fichier JavaScript -->
+    <script src="assets/js/noel.js"></script>
+</body>
+</html>
