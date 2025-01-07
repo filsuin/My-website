@@ -1,0 +1,211 @@
+/* Styles généraux */
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(to right, #f4f4f9, #e0e0e0);
+    color: #333;
+    overflow-y: scroll; /* Ajoute une barre de défilement verticale */
+}
+
+/* Barre de navigation */
+nav {
+    background-color: #4caf50;
+    padding: 10px 0;
+    display: flex;
+    justify-content: flex-end; /* Aligne les éléments à droite */
+    align-items: center;
+}
+
+nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+nav ul li {
+    margin: 0 15px;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+}
+
+nav ul li a:hover {
+    text-decoration: underline;
+}
+
+/* Wrapper pour centrer le contenu dans toutes les pages */
+.wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+    min-height: 100vh; /* Assure que le contenu prend toute la hauteur de l'écran */
+    text-align: center;
+}
+
+/* Conteneur principal */
+.container {
+    max-width: 800px;
+    width: 90%; /* Responsive */
+    padding: 20px;
+    background-color: #ffffff;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    margin: 20px auto; /* Centrer horizontalement */
+}
+
+/* Header */
+header h1 {
+    font-size: 2.5em;
+    margin-bottom: 10px;
+}
+
+header p {
+    font-size: 1.2em;
+    margin-bottom: 20px;
+    color: #555;
+}
+
+/* Boutons */
+.button, input[type="file"], input[type="submit"], button {
+    display: inline-block;
+    margin: 10px 5px;
+    padding: 10px 20px;
+    font-size: 16px;
+    color: #fff;
+    text-decoration: none;
+    background-color: #4caf50;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.button i {
+    margin-right: 5px;
+}
+
+.button:hover, input[type="file"]:hover, input[type="submit"]:hover, button:hover {
+    background-color: #45a049;
+}
+
+input[type="range"] {
+    width: 100%;
+    margin: 10px 0;
+}
+
+#copyButton {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 1.5em;
+    color: #4caf50;
+}
+
+#copyButton:hover {
+    color: #45a049;
+}
+
+/* Footer */
+footer {
+    width: 100%;
+    text-align: center;
+    background: #333;
+    color: white;
+    padding: 10px 0;
+    font-size: 14px;
+    position: relative;
+    bottom: 0;
+    left: 0;
+    z-index: 1000;
+}
+
+/* Lien pour retourner à l'accueil */
+.wrapper .button {
+    margin-top: 20px;
+}
+
+/* Responsive pour petits écrans */
+@media (max-width: 768px) {
+    header h1 {
+        font-size: 1.8em;
+    }
+
+    header p {
+        font-size: 1em;
+    }
+
+    .button, input[type="file"], input[type="submit"], button {
+        padding: 8px 15px;
+        font-size: 14px;
+    }
+}
+
+/* Styles pour l'aperçu de l'image */
+#previewContainer {
+    margin-top: 20px;
+    max-width: 100%;
+    max-height: 400px;
+    overflow: hidden;
+}
+
+#previewContainer img {
+    max-width: 100%;
+    max-height: 100%;
+    display: block;
+    margin: auto;
+}
+
+.qr-code-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+    width: 100%;
+}
+
+#qrcode {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.password-result-container {
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+}
+
+#passwordResult {
+    margin-right: 10px;
+    font-size: 1.2em;
+    word-break: break-all;
+}
+
+/* Home button */
+.home-button {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background-color: #4caf50;
+    color: white;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+}
+
+.home-button i {
+    margin-right: 5px;
+}
+
+.home-button:hover {
+    background-color: #45a049;
+}
