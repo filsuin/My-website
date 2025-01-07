@@ -6,6 +6,16 @@ body {
     background: linear-gradient(to right, #f4f4f9, #e0e0e0);
     color: #333;
     overflow-y: scroll; /* Ajoute une barre de défilement verticale */
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+html {
+    height: 100%;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
 }
 
 /* Barre de navigation */
@@ -47,6 +57,7 @@ nav ul li a:hover {
     width: 100%;
     min-height: 100vh; /* Assure que le contenu prend toute la hauteur de l'écran */
     text-align: center;
+    flex: 1;
 }
 
 /* Conteneur principal */
@@ -124,6 +135,15 @@ footer {
     bottom: 0;
     left: 0;
     z-index: 1000;
+}
+
+.footer {
+    background-color: #f1f1f1;
+    text-align: center;
+    padding: 10px 0;
+    position: relative;
+    bottom: 0;
+    width: 100%;
 }
 
 /* Lien pour retourner à l'accueil */
