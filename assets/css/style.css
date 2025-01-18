@@ -23,8 +23,9 @@ nav {
     background-color: #4caf50;
     padding: 10px 0;
     display: flex;
-    justify-content: flex-end; /* Aligne les éléments à droite */
+    justify-content: center;
     align-items: center;
+    flex-wrap: wrap;
 }
 
 nav ul {
@@ -46,6 +47,32 @@ nav ul li a {
 
 nav ul li a:hover {
     text-decoration: underline;
+}
+
+.nav-buttons {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.nav-buttons li {
+    margin: 5px;
+}
+
+.nav-buttons a {
+    color: white;
+    text-decoration: none;
+    padding: 10px 20px;
+    background-color: #444;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+.nav-buttons a:hover {
+    background-color: #555;
 }
 
 /* Wrapper pour centrer le contenu dans toutes les pages */
@@ -81,6 +108,12 @@ header p {
     font-size: 1.2em;
     margin-bottom: 20px;
     color: #555;
+}
+
+header {
+    background-color: #333;
+    color: white;
+    padding: 10px 0;
 }
 
 /* Boutons */
@@ -164,6 +197,14 @@ footer {
     .button, input[type="file"], input[type="submit"], button {
         padding: 8px 15px;
         font-size: 14px;
+    }
+
+    .nav-buttons {
+        flex-direction: column;
+    }
+
+    .nav-buttons li {
+        margin: 10px 0;
     }
 }
 
