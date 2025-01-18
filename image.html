@@ -1,92 +1,55 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Convertisseur de Devises</title>
+    <title>Convertisseur d'Images</title>
     <link rel="stylesheet" href="assets/css/style.css">
+    <script src="assets/js/image.js" defer></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
-    <a href="index.html" class="button home-button">
-        <i class="fas fa-arrow-left"></i> Retour à l'accueil
-    </a>
-    <div class="wrapper">
-        <div class="container">
-            <h1>Convertisseur de Devises</h1>
-            <form id="currencyForm">
-                <div class="form-group">
-                    <label for="amount">Montant :</label>
-                    <input type="number" id="amount" name="amount" required>
-                </div>
-                <div class="form-group">
-                    <label for="fromCurrency">De :</label>
-                    <select id="fromCurrency" name="fromCurrency" required>
-                        <option value="USD">USD - Dollar américain</option>
-                        <option value="EUR">EUR - Euro</option>
-                        <option value="JPY">JPY - Yen japonais</option>
-                        <option value="GBP">GBP - Livre sterling</option>
-                        <option value="AUD">AUD - Dollar australien</option>
-                        <option value="CAD">CAD - Dollar canadien</option>
-                        <option value="CHF">CHF - Franc suisse</option>
-                        <option value="CNY">CNY - Yuan chinois</option>
-                        <option value="HKD">HKD - Dollar de Hong Kong</option>
-                        <option value="NZD">NZD - Dollar néo-zélandais</option>
-                        <option value="SEK">SEK - Couronne suédoise</option>
-                        <option value="KRW">KRW - Won sud-coréen</option>
-                        <option value="SGD">SGD - Dollar de Singapour</option>
-                        <option value="NOK">NOK - Couronne norvégienne</option>
-                        <option value="MXN">MXN - Peso mexicain</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label for="toCurrency">À :</label>
-                    <select id="toCurrency" name="toCurrency" required>
-                        <option value="USD">USD - Dollar américain</option>
-                        <option value="EUR">EUR - Euro</option>
-                        <option value="JPY">JPY - Yen japonais</option>
-                        <option value="GBP">GBP - Livre sterling</option>
-                        <option value="AUD">AUD - Dollar australien</option>
-                        <option value="CAD">CAD - Dollar canadien</option>
-                        <option value="CHF">CHF - Franc suisse</option>
-                        <option value="CNY">CNY - Yuan chinois</option>
-                        <option value="HKD">HKD - Dollar de Hong Kong</option>
-                        <option value="NZD">NZD - Dollar néo-zélandais</option>
-                        <option value="SEK">SEK - Couronne suédoise</option>
-                        <option value="KRW">KRW - Won sud-coréen</option>
-                        <option value="SGD">SGD - Dollar de Singapour</option>
-                        <option value="NOK">NOK - Couronne norvégienne</option>
-                        <option value="MXN">MXN - Peso mexicain</option>
-                    </select>
-                </div>
-                <button type="submit">Convertir</button>
-            </form>
-            <div id="resultContainer"></div>
-        </div>
+    <a href="index.html" class="home-button"><i class="fas fa-home"></i> Retour à l'accueil</a>
+    <div class="container">
+        <h1>Convertisseur d'Images</h1>
+        <form id="convertForm">
+            <div class="form-group">
+                <label for="file">Télécharger une image :</label>
+                <input type="file" id="file" name="file" required accept="image/*">
+            </div>
+            <div class="form-group">
+                <label for="format">Format de sortie :</label>
+                <select id="format" name="format" required>
+                    <option value="jpeg">JPEG</option>
+                    <option value="png">PNG</option>
+                    <option value="bmp">BMP</option>
+                    <option value="gif">GIF</option>
+                    <option value="tiff">TIFF</option>
+                    <option value="ico">ICO</option>
+                    <option value="webp">WEBP</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="quality">Qualité (1-100) :</label>
+                <input type="range" id="quality" name="quality" value="100" min="1" max="100" oninput="this.nextElementSibling.value = this.value">
+                <output>100</output>
+            </div>
+            <div class="form-group">
+                <label for="width">Largeur (px) :</label>
+                <input type="number" id="width" name="width">
+            </div>
+            <div class="form-group">
+                <label for="height">Hauteur (px) :</label>
+                <input type="number" id="height" name="height">
+            </div>
+            <button type="submit">Convertir</button>
+        </form>
+        <div id="previewContainer"></div>
+        <p id="sizeEstimate"></p>
+        <a id="downloadLink" href="#" download style="display:none;" class="button">Télécharger l'image convertie</a>
     </div>
     <footer class="footer">
         <p>&copy; 2025 Mes Projets. Tous droits réservés.</p>
     </footer>
-
-    <script>
-        document.getElementById('currencyForm').addEventListener('submit', function(event) {
-            event.preventDefault();
-            const amount = document.getElementById('amount').value;
-            const fromCurrency = document.getElementById('fromCurrency').value;
-            const toCurrency = document.getElementById('toCurrency').value;
-
-            fetch(`https://api.exchangerate-api.com/v4/latest/${fromCurrency}`)
-                .then(response => response.json())
-                .then(data => {
-                    const rate = data.rates[toCurrency];
-                    const result = amount * rate;
-                    document.getElementById('resultContainer').innerText = `${amount} ${fromCurrency} = ${result.toFixed(2)} ${toCurrency}`;
-                })
-                .catch(error => {
-                    console.error('Error fetching exchange rates:', error);
-                    document.getElementById('resultContainer').innerText = 'Erreur lors de la récupération des taux de change.';
-                });
-        });
-    </script>
 </body>
 </html>
