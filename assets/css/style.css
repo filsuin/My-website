@@ -171,9 +171,10 @@ footer {
 }
 
 .footer {
-    background-color: #f1f1f1;
+    background-color: #333; /* Darker background for better contrast */
+    color: white; /* White text for better readability */
     text-align: center;
-    padding: 10px 0;
+    padding: 20px 0; /* More padding for better spacing */
     position: relative;
     bottom: 0;
     width: 100%;
@@ -201,6 +202,7 @@ footer {
 
     .nav-buttons {
         flex-direction: column;
+        align-items: center;
     }
 
     .nav-buttons li {
@@ -269,4 +271,11 @@ footer {
 
 .home-button:hover {
     background-color: #45a049;
+}
+
+/* Styles for select with flags */
+select {
+    padding-right: 30px; /* Add space for the flag */
+    background-position: right 10px center;
+    background-size: 20px 20px;
 }
