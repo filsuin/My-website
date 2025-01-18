@@ -38,31 +38,43 @@ Cette page vous permet de convertir des images en différents formats et de redi
 #### Instructions :
 
 1. **Téléchargez une image** en cliquant sur le bouton de téléchargement.
-2. **Sélectionnez le format de sortie** (JPEG, PNG, BMP, GIF, TIFF, ICO, WEBP).
-3. **Ajustez la qualité** de l'image (1-100).
-4. **Redimensionnez l'image** en spécifiant la largeur et/ou la hauteur.
+2. **Sélectionnez le format de sortie** dans le menu déroulant.
+3. **Ajustez la qualité** de l'image en utilisant le curseur.
+4. **Entrez la largeur** souhaitée en pixels.
 5. **Cliquez sur "Convertir"** pour convertir l'image.
-6. **Téléchargez l'image convertie** en cliquant sur le bouton de téléchargement.
 
-### Générateur de Mots de Passe (`password_generator.html`)
+### Générateur de Mots de Passe (`password.html`)
 
-Cette page vous permet de générer des mots de passe aléatoires en fonction des exigences de l'utilisateur.
-
-#### Instructions :
-
-1. **Spécifiez la longueur** du mot de passe.
-2. **Sélectionnez les types de caractères** à inclure (minuscules, majuscules, chiffres, caractères spéciaux).
-3. **Cliquez sur "Générer"** pour créer le mot de passe.
-4. **Copiez le mot de passe généré** affiché dans le conteneur de résultats.
+Cette page vous permet de générer des mots de passe sécurisés.
 
 #### Instructions :
 
-1. **Entrez le lien de la vidéo YouTube** dans le champ prévu à cet effet.
-2. **Sélectionnez le format de sortie** (MP3 ou MP4).
-3. **Choisissez la qualité** de téléchargement (Haute, Moyenne, Basse).
-4. **Cliquez sur "Télécharger"** pour obtenir le lien de téléchargement.
-5. **Téléchargez la vidéo** en cliquant sur le lien de téléchargement généré.
+1. **Sélectionnez la longueur** du mot de passe.
+2. **Choisissez les options** (lettres majuscules, lettres minuscules, chiffres, symboles).
+3. **Cliquez sur "Générer"** pour créer un mot de passe sécurisé.
 
-## Contribuer
+### Convertisseur de Devises (`currency_converter.html`)
 
-Les contributions sont les bienvenues ! N'hésitez pas à ouvrir une issue ou à soumettre une pull request.
+Cette page vous permet de convertir des montants d'une monnaie à une autre en utilisant des taux de change actualisés.
+
+#### Instructions :
+
+1. **Entrez le montant** à convertir.
+2. **Sélectionnez la devise de départ** dans le menu déroulant.
+3. **Sélectionnez la devise d'arrivée** dans le menu déroulant.
+4. **Cliquez sur "Convertir"** pour obtenir le montant converti.
+
+### Page de Contact (`contact.html`)
+
+Cette page vous permet de me contacter via un formulaire.
+
+#### Instructions :
+
+1. **Entrez votre nom** dans le champ prévu à cet effet.
+2. **Entrez votre email** dans le champ prévu à cet effet.
+3. **Entrez votre message** dans le champ prévu à cet effet.
+4. **Cliquez sur "Envoyer"** pour envoyer le message.
+
+## Auteur
+
+- **Filsuin** - [GitHub](https://github.com/filsuin)
