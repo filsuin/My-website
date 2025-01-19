@@ -92,4 +92,70 @@ document.addEventListener("DOMContentLoaded", () => {
 
         reader.readAsDataURL(file);
     });
+
+    document.getElementById("qrForm").addEventListener("submit", function (e) {
+        e.preventDefault();
+
+        const url = document.getElementById("url").value;
+        const size = document.getElementById("size").value;
+        const color = document.getElementById("color").value;
+
+        if (!url) {
+            alert("Veuillez entrer une URL valide.");
+            return;
+        }
+
+        const qrcodeContainer = document.getElementById("qrcode");
+        qrcodeContainer.innerHTML = ""; // Clear previous QR code
+
+        const qrcode = new QRCode(qrcodeContainer, {
+            text: url,
+            width: size * 10, // Adjust size
+            height: size * 10, // Adjust size
+            colorDark: color,
+            colorLight: "#ffffff",
+        });
+
+        // Show download link
+        const downloadLink = document.getElementById("downloadLink");
+        setTimeout(() => {
+            const qrCanvas = qrcodeContainer.querySelector("canvas");
+            if (qrCanvas) {
+                downloadLink.href = qrCanvas.toDataURL("image/png");
+                downloadLink.style.display = "inline-block";
+            }
+        }, 500); // Wait for QR code to be generated
+    });
+
+    document.getElementById("generateButton").addEventListener("click", function () {
+        const url = document.getElementById("url").value;
+        const size = document.getElementById("size").value;
+        const color = document.getElementById("color").value;
+
+        if (!url) {
+            alert("Veuillez entrer une URL valide.");
+            return;
+        }
+
+        const qrcodeContainer = document.getElementById("qrcode");
+        qrcodeContainer.innerHTML = ""; // Clear previous QR code
+
+        const qrcode = new QRCode(qrcodeContainer, {
+            text: url,
+            width: size * 10, // Adjust size
+            height: size * 10, // Adjust size
+            colorDark: color,
+            colorLight: "#ffffff",
+        });
+
+        // Show download link
+        const downloadLink = document.getElementById("downloadLink");
+        setTimeout(() => {
+            const qrCanvas = qrcodeContainer.querySelector("canvas");
+            if (qrCanvas) {
+                downloadLink.href = qrCanvas.toDataURL("image/png");
+                downloadLink.style.display = "inline-block";
+            }
+        }, 500); // Wait for QR code to be generated
+    });
 });
