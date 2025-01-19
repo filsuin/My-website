@@ -18,14 +18,12 @@ html {
     flex-direction: column;
 }
 
-/* Barre de navigation */
+/* Navigation styles */
 nav {
+    position: relative;
+    width: 100%;
     background-color: #4caf50;
-    padding: 10px 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-wrap: wrap;
+    padding: 10px 20px;
 }
 
 nav ul {
@@ -54,12 +52,12 @@ nav ul li a:hover {
     padding: 0;
     margin: 0;
     display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
+    justify-content: center; /* Center the links */
+    flex: 1;
 }
 
 .nav-buttons li {
-    margin: 5px;
+    margin: 0 10px;
 }
 
 .nav-buttons a {
@@ -73,6 +71,24 @@ nav ul li a:hover {
 
 .nav-buttons a:hover {
     background-color: #555;
+}
+
+/* Menu toggle button */
+.menu-toggle {
+    display: none;
+    cursor: pointer;
+    position: absolute;
+    left: 20px;
+    top: 20px;
+    z-index: 1000;
+    background: none;
+    border: none;
+    padding: 10px;
+}
+
+.menu-toggle i {
+    font-size: 24px;
+    color: #4caf50; /* Changed from white to match the theme color */
 }
 
 /* Wrapper pour centrer le contenu dans toutes les pages */
@@ -200,13 +216,58 @@ footer {
         font-size: 14px;
     }
 
+    nav {
+        padding: 15px 0;
+    }
+
     .nav-buttons {
+        display: none;
         flex-direction: column;
-        align-items: center;
+        width: 100%;
     }
 
     .nav-buttons li {
         margin: 10px 0;
+        text-align: center;
+    }
+
+    .menu-toggle {
+        display: block;
+        position: fixed;
+        top: 60px; /* Adjusted position to be below the header */
+        left: 20px;
+    }
+
+    .nav-buttons.active {
+        display: flex;
+    }
+
+    .nav-buttons {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100vh;
+        background-color: rgba(76, 175, 80, 0.95);
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        z-index: 999;
+    }
+
+    .nav-buttons.active {
+        display: flex;
+    }
+
+    .nav-buttons li {
+        margin: 15px 0;
+    }
+
+    .nav-buttons a {
+        display: block;
+        width: 80%;
+        margin: 0 auto;
     }
 }
 
