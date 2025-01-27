@@ -4,48 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>QR Code Generator</title>
-    <!-- Inclusion directe du fichier CSS -->
-    <link rel="stylesheet" href="assets/CSS/style.css">
-    <!-- Favicon -->
-    <link rel="icon" type="image/png" href="assets/Images/favicon.ico">
-    <!-- Font Awesome CDN -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link rel="stylesheet" href="assets/CSS/style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
 </head>
 <body>
-    <a href="index.html" class="home-button"><i class="fas fa-home"></i> Retour à l'accueil</a>
-    <div class="wrapper">
-        <div class="container">
-            <form id="qrForm">
-                <label for="url">URL :</label>
-                <input type="text" id="url" name="url" required>
-                
-                <label for="color">Couleur :</label>
-                <input type="color" id="color" name="color" value="#000000">
-                
-                <label for="size">Taille :</label>
-                <input type="number" id="size" name="size" value="10" min="1" max="40">
-                
-                <button type="button" id="generate" class="button">Générer QR Code</button>
-            </form>
-
-            <!-- Conteneur pour afficher le QR Code -->
-            <div class="qr-code-container">
-                <div id="qrcode"></div>
-            </div>
-
-            <!-- Bouton pour télécharger le QR Code -->
-            <a id="downloadLink" href="#" download="qrcode.png" class="button" style="display: none;">Télécharger QR Code</a>
-        </div>
+    <div class="container">
+        <h1>QR Code Generator</h1>
+        <input type="text" id="url-input" placeholder="Enter URL">
+        <button id="generate-btn">Generate QR Code</button>
+        <div id="qr-code"></div>
+        <a id="download-link" href="#" download="qrcode.png">Download QR Code</a>
     </div>
-
-    <!-- QRCode.js depuis un CDN -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
-    <!-- Lien vers le fichier JavaScript dans assets/js -->
-    <script src="assets/js/script.js"></script>
-
-    <!-- Footer -->
-    <footer class="footer">
-        <p>&copy; 2025 Mes Projets. Tous droits réservés.</p>
-    </footer>
+  <script src="assets/js/qr_code.js"></script>
 </body>
 </html>
