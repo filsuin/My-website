@@ -3,7 +3,7 @@ body {
     font-family: 'Arial', sans-serif;
     margin: 0;
     padding: 0;
-    background: linear-gradient(to right, #f4f4f9, #e0e0e0);
+    background: #f4f4f9;
     color: #333;
     overflow-y: scroll; /* Ajoute une barre de défilement verticale */
     height: 100%;

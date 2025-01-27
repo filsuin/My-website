@@ -3,42 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Générateur de QR Code</title>
-    <link rel="stylesheet" href="assets/CSS/style.css">
-    <link rel="icon" type="image/png" href="assets/Images/favicon.ico">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <title>QR Code Generator</title>
+  <link rel="stylesheet" href="assets/CSS/style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
 </head>
 <body>
-    <a href="index.html" class="home-button"><i class="fas fa-home"></i> Retour à l'accueil</a>
-    <div class="wrapper">
-        <div class="container">
-            <header>
-                <h1>Générateur de QR Code</h1>
-                <p>Générez un QR Code à partir d'une URL.</p>
-            </header>
-            <form id="qrForm">
-                <div class="form-group">
-                    <label for="url">URL :</label>
-                    <input type="text" id="url" name="url" required>
-                </div>
-                <div class="form-group">
-                    <label for="size">Taille :</label>
-                    <input type="number" id="size" name="size" value="10" min="1" max="40">
-                </div>
-                <div class="form-group">
-                    <label for="color">Couleur :</label>
-                    <input type="color" id="color" name="color" value="#000000">
-                </div>
-                <button type="button" id="generateButton">Générer QR Code</button>
-            </form>
-            <div id="qrcode" class="qr-code-container"></div>
-            <a id="downloadLink" href="#" download="qrcode.png" style="display: none;">Télécharger le QR Code</a>
-        </div>
+    <div class="container">
+        <h1>QR Code Generator</h1>
+        <input type="text" id="url-input" placeholder="Enter URL">
+        <button id="generate-btn">Generate QR Code</button>
+        <div id="qr-code"></div>
+        <a id="download-link" href="#" download="qrcode.png">Download QR Code</a>
     </div>
-    <footer class="footer">
-        <p>&copy; 2025 Mes Projets. Tous droits réservés.</p>
-    </footer>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
-    <script src="assets/js/script.js"></script>
+  <script src="assets/js/qr_code.js"></script>
 </body>
 </html>
