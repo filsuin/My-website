@@ -115,7 +115,7 @@ nav ul li a:hover {
     background-color: #aebeed;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     border-radius: 10px;
-    margin: 20px auto;
+    margin: 60px auto 20px auto; /* Added top margin to prevent overlap */
     flex: 1; /* Ensure the container takes up available space */
     display: flex;
     flex-direction: column;
@@ -184,6 +184,9 @@ input[type="range"] {
 
 /* Boutons de retour à l'accueil */
 .home-button {
+    position: absolute;
+    top: 10px;
+    left: 10px;
     background-color: #444;
     color: white;
     padding: 10px 20px;
@@ -191,7 +194,7 @@ input[type="range"] {
     border-radius: 25px;
     display: flex;
     align-items: center;
-    transition: background-color 0.3s ease;
+    z-index: 1000;
 }
 
 .home-button i {
@@ -300,6 +303,18 @@ footer {
         width: 80%;
         margin: 0 auto;
     }
+
+    .home-button {
+        position: fixed;
+        top: 15px;
+        left: 15px;
+    }
+
+    .container {
+        margin-top: 70px; /* Increased top margin for mobile */
+        width: 95%;
+        padding: 15px;
+    }
 }
 
 /* Styles pour l'aperçu de l'image */
@@ -399,5 +414,161 @@ input[type="text"] {
     .button {
         padding: 8px 15px;
         font-size: 14px;
+    }
+}
+
+/* Ajoutez ces styles à votre fichier CSS existant */
+
+.social-links {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin: 20px 0;
+}
+
+.social-button {
+    display: inline-flex;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #27279c;
+    color: white;
+    text-decoration: none;
+    border-radius: 25px;
+    transition: background-color 0.3s;
+}
+
+.social-button:hover {
+    background-color: #4487d3;
+}
+
+.social-button i {
+    margin-right: 10px;
+}
+
+/* Mise à jour des styles du formulaire de contact */
+.contact-form {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 30px;
+    width: 100%;
+}
+
+.form-group {
+    margin-bottom: 25px;
+    width: 100%;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: bold;
+    font-size: 1.1em;
+    color: #333;
+    text-align: left;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 15px;
+    border: 2px solid #ccc;
+    border-radius: 8px;
+    box-sizing: border-box;
+    font-size: 1.1em;
+    transition: border-color 0.3s ease;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    border-color: #27279c;
+    outline: none;
+}
+
+.form-group input {
+    height: 50px;
+}
+
+.form-group textarea {
+    resize: vertical;
+    min-height: 150px;
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+    .contact-form {
+        padding: 15px;
+    }
+
+    .form-group {
+        margin-bottom: 20px;
+    }
+
+    .form-group input,
+    .form-group textarea {
+        padding: 12px;
+        font-size: 1em;
+    }
+
+    .form-group input {
+        height: 45px;
+    }
+
+    .form-group textarea {
+        min-height: 120px;
+    }
+}
+
+@media (max-width: 480px) {
+    .contact-form {
+        padding: 10px;
+    }
+
+    .form-group {
+        margin-bottom: 15px;
+    }
+
+    .form-group input {
+        height: 40px;
+    }
+}
+
+.contact-form {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+.form-group textarea {
+    resize: vertical;
+    min-height: 100px;
+}
+
+@media (max-width: 768px) {
+    .social-links {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .contact-form {
+        padding: 10px;
     }
 }

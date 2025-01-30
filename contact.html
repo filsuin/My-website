@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact - Mes Projets</title>
+    <link rel="stylesheet" href="assets/CSS/style.css">
+    <link rel="icon" type="image/x-icon" href="assets/Images/favicon.ico">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <a href="index.html" class="home-button"><i class="fas fa-home"></i> Retour à l'accueil</a>
+    <div class="wrapper">
+        <div class="container">
+            <h1>Contactez-moi</h1>
+            <div class="social-links">
+                <a href="https://github.com/filsuin" target="_blank" class="social-button">
+                    <i class="fab fa-github"></i> GitHub
+                </a>
+                <a href="https://www.linkedin.com/in/max-remonnay/" target="_blank" class="social-button">
+                    <i class="fab fa-linkedin"></i> LinkedIn
+                </a>
+            </div>
+            <form action="https://formspree.io/f/xovjwvyp" method="POST" class="contact-form">
+                <div class="form-group">
+                    <label for="name">Nom :</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email :</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="subject">Sujet :</label>
+                    <input type="text" id="subject" name="subject" required>
+                </div>
+                <div class="form-group">
+                    <label for="message">Message :</label>
+                    <textarea id="message" name="message" rows="6" required></textarea>
+                </div>
+                <button type="submit" class="button">Envoyer</button>
+            </form>
+        </div>
+    </div>
+    <footer class="footer">
+        <p>&copy; 2025 Mes Projets. Tous droits réservés.</p>
+    </footer>
+</body>
+</html>
