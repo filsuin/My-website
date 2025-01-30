@@ -58,34 +58,19 @@
                         <option value="MXN">MXN - Peso mexicain</option>
                     </select>
                 </div>
-                <button type="submit">Convertir</button>
+                <button type="submit" class="button">Convertir</button>
             </form>
-            <div id="resultContainer"></div>
+            <div class="result-container">
+                <div id="result" class="result"></div>
+                <button id="copyButton" class="copy-button" style="display: none;">
+                    <i class="fas fa-copy"></i>
+                </button>
+            </div>
         </div>
     </div>
     <footer class="footer">
         <p>&copy; 2025 Mes Projets. Tous droits réservés.</p>
     </footer>
-
-    <script>
-        document.getElementById('currencyForm').addEventListener('submit', function(event) {
-            event.preventDefault();
-            const amount = parseFloat(document.getElementById('amount').value).toFixed(2);
-            const fromCurrency = document.getElementById('fromCurrency').value;
-            const toCurrency = document.getElementById('toCurrency').value;
-
-            fetch(`https://api.exchangerate-api.com/v4/latest/${fromCurrency}`)
-                .then(response => response.json())
-                .then(data => {
-                    const rate = data.rates[toCurrency];
-                    const result = (amount * rate).toFixed(2);
-                    document.getElementById('resultContainer').innerText = `${amount} ${fromCurrency} = ${result} ${toCurrency}`;
-                })
-                .catch(error => {
-                    console.error('Error fetching exchange rates:', error);
-                    document.getElementById('resultContainer').innerText = 'Erreur lors de la récupération des taux de change.';
-                });
-        });
-    </script>
+    <script src="assets/js/currency.js"></script>
 </body>
 </html>
