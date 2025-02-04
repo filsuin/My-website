@@ -9,6 +9,34 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
+    <div class="ticker-container">
+        <!-- TradingView Widget BEGIN -->
+        <div class="tradingview-widget-container">
+            <div class="tradingview-widget-container__widget"></div>
+            <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js" async>
+            {
+                "symbols": [
+                    {"proName": "FX:EURUSD", "title": "EUR/USD"},
+                    {"proName": "FX:GBPUSD", "title": "GBP/USD"},
+                    {"proName": "FX:USDJPY", "title": "USD/JPY"},
+                    {"proName": "FX:USDCHF", "title": "USD/CHF"},
+                    {"proName": "FX:AUDUSD", "title": "AUD/USD"},
+                    {"proName": "FX:USDCAD", "title": "USD/CAD"},
+                    {"proName": "FX:NZDUSD", "title": "NZD/USD"},
+                    {"proName": "FX:EURJPY", "title": "EUR/JPY"},
+                    {"proName": "FX:GBPJPY", "title": "GBP/JPY"},
+                    {"proName": "FX:EURGBP", "title": "EUR/GBP"}
+                ],
+                "showSymbolLogo": true,
+                "colorTheme": "dark",
+                "isTransparent": false,
+                "displayMode": "adaptive",
+                "locale": "fr"
+            }
+            </script>
+        </div>
+        <!-- TradingView Widget END -->
+    </div>
     <a href="index.html" class="home-button"><i class="fas fa-home"></i> Retour à l'accueil</a>
     <div class="wrapper">
         <div class="container">
