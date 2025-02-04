@@ -32,6 +32,9 @@ document.getElementById('passwordForm').addEventListener('submit', function(even
     const passwordResult = document.getElementById('passwordResult');
     passwordResult.textContent = password;
 
+    // Mettre à jour la force du mot de passe
+    updatePasswordStrength(password);
+
     const copyButton = document.getElementById('copyButton');
     copyButton.style.display = 'inline-block';
 });
@@ -44,3 +47,41 @@ document.getElementById('copyButton').addEventListener('click', function() {
         alert('Erreur lors de la copie du mot de passe: ', err);
     });
 });
+
+function updatePasswordStrength(password) {
+    const result = zxcvbn(password);
+    const strengthProgress = document.getElementById('strengthProgress');
+    const strengthText = document.getElementById('strengthText');
+    
+    // Score va de 0 à 4
+    const score = result.score;
+    let strength, color;
+    
+    switch(score) {
+        case 0:
+            strength = 'Très faible';
+            color = '#ff0000';
+            break;
+        case 1:
+            strength = 'Faible';
+            color = '#ff4d4d';
+            break;
+        case 2:
+            strength = 'Moyen';
+            color = '#ffd700';
+            break;
+        case 3:
+            strength = 'Fort';
+            color = '#90EE90';
+            break;
+        case 4:
+            strength = 'Très fort';
+            color = '#00ff00';
+            break;
+    }
+    
+    strengthProgress.style.width = `${(score + 1) * 20}%`;
+    strengthProgress.style.backgroundColor = color;
+    strengthText.textContent = strength;
+    strengthText.style.color = color;
+}
