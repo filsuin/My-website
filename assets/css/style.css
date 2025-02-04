@@ -205,6 +205,21 @@ input[type="range"] {
     background-color: #555;
 }
 
+/* Home button position adjustment for currency converter page */
+.home-button {
+    position: absolute;
+    top: 60px; /* Augmenté de 50px à 60px */
+    left: 10px;
+    background-color: #444;
+    color: white;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 25px;
+    display: flex;
+    align-items: center;
+    z-index: 1000;
+}
+
 /* Footer */
 footer {
     width: 100%;
@@ -302,6 +317,10 @@ footer {
         display: block;
         width: 80%;
         margin: 0 auto;
+    }
+
+    .home-button {
+        top: 65px; /* Augmenté de 55px à 65px */
     }
 
     .home-button {
