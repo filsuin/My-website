@@ -809,6 +809,117 @@ input[type="text"] {
 .forecast-container {
     margin-top: 20px;
     width: 100%;
+    overflow: hidden;
+}
+
+/* Mise à jour des styles des prévisions */
+.forecast-scroll {
+    display: flex;
+    overflow-x: auto;
+    overflow-y: hidden;
+    padding: 20px 0;
+    gap: 15px;
+    scrollbar-width: thin;
+    scrollbar-color: #27279c #f0f0f0;
+    -webkit-overflow-scrolling: touch;
+    -ms-overflow-style: -ms-autohiding-scrollbar;
+    margin-bottom: 10px; /* Pour la barre de défilement */
+}
+
+/* Style de la barre de défilement */
+.forecast-scroll::-webkit-scrollbar {
+    height: 8px;
+}
+
+.forecast-scroll::-webkit-scrollbar-track {
+    background: #f0f0f0;
+    border-radius: 4px;
+}
+
+.forecast-scroll::-webkit-scrollbar-thumb {
+    background: #27279c;
+    border-radius: 4px;
+}
+
+.forecast-scroll::-webkit-scrollbar-thumb:hover {
+    background: #4487d3;
+}
+
+.forecast-card {
+    min-width: 110px;
+    max-width: 120px;
+    padding: 12px;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    flex: 0 0 auto;
+}
+
+/* Ajustements responsives */
+@media (max-width: 768px) {
+    .forecast-card {
+        min-width: 85px;
+        max-width: 100px;
+        padding: 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    .forecast-card {
+        min-width: 75px;
+        max-width: 90px;
+        padding: 8px;
+    }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .forecast-card {
+        min-width: 90px;
+        padding: 10px;
+    }
+
+    .forecast-date {
+        font-size: 0.8em;
+    }
+
+    .forecast-temp {
+        font-size: 0.85em;
+    }
+
+    .weather-container {
+        padding: 15px;
+    }
+
+    .weather-details {
+        font-size: 1em;
+    }
+
+    .temperature {
+        font-size: 2.5em;
+    }
+
+    .weather-main img {
+        width: 80px;
+        height: 80px;
+    }
+}
+
+@media (max-width: 480px) {
+    .forecast-card {
+        min-width: 80px;
+        padding: 8px;
+    }
+
+    .forecast-date {
+        font-size: 0.75em;
+    }
+
+    .forecast-card img {
+        width: 40px;
+        height: 40px;
+    }
 }
 
 .forecast-scroll {
