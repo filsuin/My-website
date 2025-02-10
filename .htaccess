@@ -1,0 +1,21 @@
+Options -Indexes
+
+<Files "*.php">
+    Order Allow,Deny
+    Allow from all
+</Files>
+
+<FilesMatch "\.(css|js|png|jpg|jpeg|gif|ico)$">
+    Order Allow,Deny
+    Allow from all
+</FilesMatch>
+
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteBase /
+    
+    # Protect assets directory
+    RewriteCond %{REQUEST_URI} ^/assets/.*$
+    RewriteCond %{REQUEST_URI} !\.(css|js|png|jpg|jpeg|gif|ico)$
+    RewriteRule .* - [F]
+</IfModule>
