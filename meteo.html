@@ -37,6 +37,14 @@
                         <p>Vent: <span id="wind-speed"></span> km/h</p>
                     </div>
                 </div>
+                <div class="forecast-toggle">
+                    <button id="hourly-btn" class="toggle-btn active">Par heure</button>
+                    <button id="daily-btn" class="toggle-btn">Sur 7 jours</button>
+                </div>
+                <div id="forecast-container" class="forecast-container">
+                    <div id="hourly-forecast" class="forecast-scroll"></div>
+                    <div id="daily-forecast" class="forecast-scroll" style="display: none;"></div>
+                </div>
             </div>
         </div>
     </div>

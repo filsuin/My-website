@@ -92,30 +92,85 @@ function getWeatherData(city) {
             }
             return response.json();
         })
-        .then(data => {
-            displayWeatherData(data);
+        .then(weatherData => {
+            displayWeatherData(weatherData);
+            return fetch(`https://api.openweathermap.org/data/2.5/forecast?q=${city}&units=metric&lang=fr&appid=${API_KEY}`);
+        })
+        .then(response => response.json())
+        .then(forecastData => {
+            document.getElementById('weather-container').style.display = 'block';
+            displayHourlyForecast(forecastData);
+            displayDailyForecast(forecastData);
         })
         .catch(error => {
-            alert('Erreur : ' + error.message);
+            console.error('Error:', error);
+            alert(error.message);
         });
 }
 
 function displayWeatherData(data) {
-    const weatherContainer = document.getElementById('weather-container');
-    const cityName = document.getElementById('city-name');
-    const temperature = document.getElementById('temperature');
-    const weatherIcon = document.getElementById('weather-icon');
-    const weatherDescription = document.getElementById('weather-description');
-    const humidity = document.getElementById('humidity');
-    const windSpeed = document.getElementById('wind-speed');
-
-    cityName.textContent = data.name;
-    temperature.textContent = Math.round(data.main.temp);
-    weatherIcon.src = `https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`;
-    weatherDescription.textContent = data.weather[0].description.charAt(0).toUpperCase() + 
-                                   data.weather[0].description.slice(1);
-    humidity.textContent = data.main.humidity;
-    windSpeed.textContent = Math.round(data.wind.speed * 3.6); // Conversion m/s en km/h
-
-    weatherContainer.style.display = 'block';
+    document.getElementById('city-name').textContent = data.name;
+    document.getElementById('temperature').textContent = Math.round(data.main.temp);
+    document.getElementById('weather-icon').src = `https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`;
+    document.getElementById('weather-description').textContent = data.weather[0].description;
+    document.getElementById('humidity').textContent = data.main.humidity;
+    document.getElementById('wind-speed').textContent = Math.round(data.wind.speed * 3.6);
 }
+
+function displayHourlyForecast(data) {
+    const container = document.getElementById('hourly-forecast');
+    container.innerHTML = '';
+    
+    data.list.slice(0, 8).forEach(item => {
+        const date = new Date(item.dt * 1000);
+        container.innerHTML += `
+            <div class="forecast-card">
+                <div class="forecast-date">${date.getHours()}h</div>
+                <img src="https://openweathermap.org/img/wn/${item.weather[0].icon}@2x.png" alt="weather">
+                <div class="forecast-temp">${Math.round(item.main.temp)}°C</div>
+            </div>
+        `;
+    });
+}
+
+function displayDailyForecast(data) {
+    const container = document.getElementById('daily-forecast');
+    container.innerHTML = '';
+    
+    const dailyData = [];
+    const days = new Set();
+    
+    data.list.forEach(item => {
+        const date = new Date(item.dt * 1000).toLocaleDateString();
+        if (!days.has(date)) {
+            days.add(date);
+            dailyData.push(item);
+        }
+    });
+
+    dailyData.slice(0, 7).forEach(item => {
+        const date = new Date(item.dt * 1000);
+        container.innerHTML += `
+            <div class="forecast-card">
+                <div class="forecast-date">${date.toLocaleDateString('fr-FR', { weekday: 'short', day: 'numeric' })}</div>
+                <img src="https://openweathermap.org/img/wn/${item.weather[0].icon}@2x.png" alt="weather">
+                <div class="forecast-temp">${Math.round(item.main.temp)}°C</div>
+            </div>
+        `;
+    });
+}
+
+// Gestion des boutons de toggle
+document.getElementById('hourly-btn').addEventListener('click', function() {
+    this.classList.add('active');
+    document.getElementById('daily-btn').classList.remove('active');
+    document.getElementById('hourly-forecast').style.display = 'flex';
+    document.getElementById('daily-forecast').style.display = 'none';
+});
+
+document.getElementById('daily-btn').addEventListener('click', function() {
+    this.classList.add('active');
+    document.getElementById('hourly-btn').classList.remove('active');
+    document.getElementById('hourly-forecast').style.display = 'none';
+    document.getElementById('daily-forecast').style.display = 'flex';
+});
