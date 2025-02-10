@@ -4,13 +4,15 @@ Un site web regroupant tous les outils que je code moi-même, avec un générate
 ## Prérequis
 
 - Un navigateur web moderne (Chrome, Firefox, Edge, Safari).
-- Une connexion Internet pour accéder aux ressources externes, comme la bibliothèque QRCode.js.
+- Une connexion Internet pour accéder aux ressources externes et APIs.
+- Un serveur web local (comme XAMPP) pour le développement.
 
 ## Installation
 
 1. Clonez ou téléchargez le projet.
-2. Ouvrez le fichier `index.html` dans votre navigateur pour accéder à la page d'accueil.
-3. Naviguez vers les différentes pages pour utiliser les outils disponibles.
+2. Configurez votre serveur web local.
+3. Créez un fichier `config.js` dans le dossier `private` avec votre clé API OpenWeatherMap.
+4. Ouvrez le site via votre serveur local.
 
 ## Fonctionnalités
 
@@ -64,6 +66,31 @@ Cette page vous permet de convertir des montants d'une monnaie à une autre en u
 3. **Sélectionnez la devise d'arrivée** dans le menu déroulant.
 4. **Cliquez sur "Convertir"** pour obtenir le montant converti.
 
+### Météo (`meteo.html`)
+
+Cette page vous permet de consulter la météo actuelle et les prévisions.
+
+#### Instructions :
+
+1. **Entrez le nom d'une ville** dans la barre de recherche.
+2. **Sélectionnez une ville** parmi les suggestions qui apparaissent.
+3. **Consultez les informations météo actuelles** :
+   - Température
+   - Description du temps
+   - Humidité
+   - Vitesse du vent
+4. **Choisissez le type de prévisions** :
+   - Par heure (24 prochaines heures)
+   - Sur 7 jours
+5. **Faites défiler horizontalement** pour voir toutes les prévisions.
+
+### Sécurité
+
+- Protection des dossiers sensibles via `.htaccess`
+- Clés API sécurisées dans un dossier privé
+- Validation des entrées utilisateur
+- Protection contre les injections
+
 ### Page de Contact (`contact.html`)
 
 Cette page vous permet de me contacter via un formulaire.
@@ -74,6 +101,14 @@ Cette page vous permet de me contacter via un formulaire.
 2. **Entrez votre email** dans le champ prévu à cet effet.
 3. **Entrez votre message** dans le champ prévu à cet effet.
 4. **Cliquez sur "Envoyer"** pour envoyer le message.
+
+## Technologies Utilisées
+
+- HTML5, CSS3, JavaScript
+- API OpenWeatherMap pour la météo
+- API ExchangeRate pour les taux de change
+- Bibliothèque QRCode.js
+- Apache avec configuration `.htaccess`
 
 ## Auteur
 
