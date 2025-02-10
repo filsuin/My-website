@@ -1,0 +1,46 @@
+-->
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Météo</title>
+    <link rel="stylesheet" href="assets/CSS/style.css">
+    <link rel="icon" type="image/x-icon" href="assets/Images/favicon.ico">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <a href="index.html" class="home-button"><i class="fas fa-home"></i> Retour à l'accueil</a>
+    <div class="wrapper">
+        <div class="container">
+            <h1>Météo</h1>
+            <div class="search-box">
+                <input type="text" id="city-input" placeholder="Entrez une ville...">
+                <button id="search-btn" class="button">
+                    <i class="fas fa-search"></i>
+                </button>
+            </div>
+            <div id="weather-container" class="weather-container" style="display: none;">
+                <div class="weather-info">
+                    <h2 id="city-name"></h2>
+                    <div class="weather-main">
+                        <img id="weather-icon" src="" alt="Weather icon">
+                        <div class="temperature">
+                            <span id="temperature"></span>°C
+                        </div>
+                    </div>
+                    <div class="weather-details">
+                        <p id="weather-description"></p>
+                        <p>Humidité: <span id="humidity"></span>%</p>
+                        <p>Vent: <span id="wind-speed"></span> km/h</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer class="footer">
+        <p>&copy; 2025 Mes Projets. Tous droits réservés.</p>
+    </footer>
+    <script src="assets/js/meteo.js"></script>
+</body>
+</html>
