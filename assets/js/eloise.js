@@ -1,18 +1,55 @@
+document.addEventListener('DOMContentLoaded', () => {
+    // Récupérer le thème sauvegardé ou utiliser 'light' par défaut
+    const savedTheme = localStorage.getItem('theme') || 'light';
+    document.documentElement.setAttribute('data-theme', savedTheme);
+    updateThemeIcon(savedTheme);
+});
+
+const themeToggle = document.getElementById('themeToggle');
+themeToggle.addEventListener('click', () => {
+    const currentTheme = document.documentElement.getAttribute('data-theme');
+    const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+    
+    document.documentElement.setAttribute('data-theme', newTheme);
+    localStorage.setItem('theme', newTheme);
+    updateThemeIcon(newTheme);
+});
+
+function updateThemeIcon(theme) {
+    const icon = themeToggle.querySelector('i');
+    icon.className = theme === 'light' ? 'fas fa-moon' : 'fas fa-sun';
+}
+
 // Fonction pour créer des cœurs flottants
 function createFloatingHeart() {
     const heart = document.createElement('div');
     heart.className = 'heart';
     heart.innerHTML = '❤️';
-    heart.style.left = Math.random() * 100 + 'vw';
+    
+    // Position horizontale aléatoire
+    heart.style.left = `${Math.random() * 95}%`;
+    // Position de départ verticale aléatoire
+    heart.style.bottom = '0';
+    // Rotation initiale aléatoire
+    heart.style.transform = `rotate(${Math.random() * 360}deg)`;
+    
+    // Vitesse de déplacement aléatoire
+    const duration = 4 + Math.random() * 2;
+    heart.style.animation = `float ${duration}s linear`;
+    
+    // Taille aléatoire
+    const size = 20 + Math.random() * 15;
+    heart.style.fontSize = `${size}px`;
+    
     document.querySelector('.hearts-animation').appendChild(heart);
     
     setTimeout(() => {
         heart.remove();
-    }, 4000);
+    }, duration * 1000);
 }
 
-// Créer des cœurs toutes les 300ms
-setInterval(createFloatingHeart, 300);
+// Ajuster l'intervalle pour une meilleure distribution
+setInterval(createFloatingHeart, 400);
 
 // Gestion des compliments
 document.getElementById('complimentBtn').addEventListener('click', async function() {
@@ -30,11 +67,11 @@ document.getElementById('complimentBtn').addEventListener('click', async functio
                 model: "mistral-small-latest",
                 messages: [{
                     role: "system",
-                    content: "Tu es une bonne personne qui génère des compliments uniques et différents à chaque fois."
+                    content: "Tu es une bonne personne créative qui ne se répète jamais et qui génère des compliments uniques et différents à chaque fois."
                 }, {
                     role: "user",
                     content: `Génère un nouveau compliment pour ma copine Éloïse pour qu'elle ait toujours confiance en elle même quand ça ne vas pas trop. 
-                             Le compliment doit être court (maximum 1 phrase), toujours différent des précédents. 
+                             Le compliment doit être court (maximum 1 phrase),
                              Timestamp: ${Date.now()}`
                 }],
                 temperature: 0.9,
