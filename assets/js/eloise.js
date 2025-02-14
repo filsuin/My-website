@@ -1,3 +1,6 @@
+let complimentHistory = [];
+const MAX_HISTORY = 10; // Garde les 10 derniers compliments en mémoire
+
 document.addEventListener('DOMContentLoaded', () => {
     // Récupérer le thème sauvegardé ou utiliser 'light' par défaut
     const savedTheme = localStorage.getItem('theme') || 'light';
@@ -68,14 +71,15 @@ document.getElementById('complimentBtn').addEventListener('click', async functio
                 model: "mistral-small-latest",
                 messages: [{
                     role: "system",
-                    content: "Tu es une bonne personne créative qui ne se répète jamais et qui génère des compliments uniques et différents à chaque fois."
+                    content: "Tu es une IA créative qui génère des compliments uniques. Tu ne dois JAMAIS répéter un compliment similaire à ceux-ci : " + complimentHistory.join(", ")
                 }, {
                     role: "user",
-                    content: `Génère un nouveau compliment pour ma copine Éloïse pour qu'elle ait toujours confiance en elle même quand ça ne vas pas trop. 
-                             Le compliment doit être court (maximum 1 phrase),
+                    content: `Génère un nouveau compliment UNIQUE et DIFFÉRENT pour ma copine Éloïse. 
+                             Le compliment doit être court (maximum 1 phrase), poétique et romantique.
+                             Il doit être TOTALEMENT DIFFÉRENT de : ${complimentHistory.join(", ")}
                              Timestamp: ${Date.now()}`
                 }],
-                temperature: 0.9,
+                temperature: 0.5, // Augmenté pour plus de créativité
                 max_tokens: 100
             })
         });
@@ -85,10 +89,18 @@ document.getElementById('complimentBtn').addEventListener('click', async functio
             throw new Error(data.error.message);
         }
         
+        const newCompliment = data.choices[0].message.content.trim();
+        
+        // Ajouter le nouveau compliment à l'historique
+        complimentHistory.push(newCompliment);
+        if (complimentHistory.length > MAX_HISTORY) {
+            complimentHistory.shift(); // Retire le plus ancien compliment
+        }
+        
         // Animation de transition
         complimentResult.style.opacity = '0';
         setTimeout(() => {
-            complimentResult.innerHTML = data.choices[0].message.content.trim();
+            complimentResult.innerHTML = newCompliment;
             complimentResult.style.opacity = '1';
         }, 300);
 
