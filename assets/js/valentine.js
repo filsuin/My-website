@@ -20,26 +20,42 @@ document.getElementById('complimentBtn').addEventListener('click', async functio
     complimentResult.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Génération en cours...';
 
     try {
-        const response = await fetch('https://api.openai.com/v1/completions', {
+        const response = await fetch('https://api.mistral.ai/v1/chat/completions', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
-                'Authorization': `Bearer ${CONFIG.OPENAI_API_KEY}`
+                'Authorization': `Bearer ${CONFIG.MISTRAL_API_KEY}`
             },
             body: JSON.stringify({
-                model: "text-davinci-003",
-                prompt: "Génère un compliment romantique, poétique et sincère en français pour ma copine Éloïse.",
-                max_tokens: 100,
-                temperature: 0.7
+                model: "mistral-small-latest",
+                messages: [{
+                    role: "system",
+                    content: "Tu es un poète romantique qui génère des compliments uniques et différents à chaque fois."
+                }, {
+                    role: "user",
+                    content: `Génère un nouveau compliment romantique, poétique et sincère en français pour ma copine Éloïse. 
+                             Le compliment doit être court (maximum 2 phrases), très romantique et différent des précédents. 
+                             Timestamp: ${Date.now()}`
+                }],
+                temperature: 0.9,
+                max_tokens: 100
             })
         });
 
         const data = await response.json();
-        complimentResult.innerHTML = data.choices[0].text.trim();
-        complimentResult.style.animation = 'none';
-        complimentResult.offsetHeight; // Force reflow
-        complimentResult.style.animation = null;
+        if (data.error) {
+            throw new Error(data.error.message);
+        }
+        
+        // Animation de transition
+        complimentResult.style.opacity = '0';
+        setTimeout(() => {
+            complimentResult.innerHTML = data.choices[0].message.content.trim();
+            complimentResult.style.opacity = '1';
+        }, 300);
+
     } catch (error) {
+        console.error('Error:', error);
         complimentResult.innerHTML = "Désolé, une erreur s'est produite. Mais tu restes la plus belle à mes yeux ! ❤️";
     }
 });
