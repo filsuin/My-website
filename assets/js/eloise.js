@@ -2,6 +2,8 @@ let complimentHistory = [];
 const MAX_HISTORY = 10; // Garde les 10 derniers compliments en mémoire
 
 document.addEventListener('DOMContentLoaded', () => {
+    // Set dark theme as default
+    document.documentElement.setAttribute('data-theme', 'dark');
     // Récupérer le thème sauvegardé ou utiliser 'light' par défaut
     const savedTheme = localStorage.getItem('theme') || 'light';
     document.documentElement.setAttribute('data-theme', savedTheme);
