@@ -195,6 +195,78 @@ body {
     }
 }
 
+.love-languages-container {
+    width: 100%;
+    height: 60px;
+    margin: 20px 0;
+    overflow: hidden;
+    position: relative;
+}
+
+.love-languages-container::before,
+.love-languages-container::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    width: 50px;
+    height: 100%;
+    z-index: 2;
+}
+
+.love-languages-container::before {
+    left: 0;
+    background: linear-gradient(to right, var(--container-bg), transparent);
+}
+
+.love-languages-container::after {
+    right: 0;
+    background: linear-gradient(to left, var(--container-bg), transparent);
+}
+
+.love-languages-scroll {
+    animation: scrollLanguages 30s linear infinite; /* Réduit de 60s à 30s */
+    white-space: nowrap;
+    padding: 15px 0;
+    display: flex;
+    align-items: center;
+}
+
+.love-language {
+    display: inline-block;
+    margin: 0 30px;
+    color: var(--text-color);
+    font-size: 1.2em;
+    opacity: 0.8;
+    transition: all 0.3s ease;
+    vertical-align: middle;
+    font-family: "Segoe UI Emoji", "Apple Color Emoji", sans-serif;
+    padding: 5px 10px;
+    border-radius: 15px;
+}
+
+.love-language .flag {
+    display: inline-block;
+    margin-right: 8px;
+    font-size: 1.2em;
+    transform: translateY(1px);
+}
+
+.love-language:hover {
+    transform: scale(1.1);
+    opacity: 1;
+    background: var(--text-color);
+    color: var(--container-bg);
+}
+
+@keyframes scrollLanguages {
+    0% {
+        transform: translateX(100%);
+    }
+    100% {
+        transform: translateX(-100%);
+    }
+}
+
 @media (max-width: 768px) {
     .valentine-title {
         font-size: 2em;
