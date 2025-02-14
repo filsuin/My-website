@@ -30,11 +30,11 @@ document.getElementById('complimentBtn').addEventListener('click', async functio
                 model: "mistral-small-latest",
                 messages: [{
                     role: "system",
-                    content: "Tu es un poète romantique qui génère des compliments uniques et différents à chaque fois."
+                    content: "Tu es une bonne personne qui génère des compliments uniques et différents à chaque fois."
                 }, {
                     role: "user",
-                    content: `Génère un nouveau compliment romantique, poétique et sincère en français pour ma copine Éloïse. 
-                             Le compliment doit être court (maximum 2 phrases), très romantique et différent des précédents. 
+                    content: `Génère un nouveau compliment pour ma copine Éloïse pour qu'elle ait toujours confiance en elle même quand ça ne vas pas trop. 
+                             Le compliment doit être court (maximum 1 phrase), toujours différent des précédents. 
                              Timestamp: ${Date.now()}`
                 }],
                 temperature: 0.9,
