@@ -1,4 +1,34 @@
 /* Styles généraux */
+:root[data-theme="light"] {
+    --background-color: #f5f5f5;
+    --text-color: #27279c;
+    --container-bg: #ffffff;
+    --shadow-color: rgba(0, 0, 0, 0.1);
+    --button-bg: #27279c;
+    --button-color: #ffffff;
+    --button-hover: #1a1a7a;
+    --glow-color: rgba(39, 39, 156, 0.3);
+    --footer-bg: rgba(255, 255, 255, 0.9);
+    --footer-text: #27279c;
+    --home-button-bg: rgba(255, 255, 255, 0.9);
+    --home-button-color: #27279c;
+}
+
+:root[data-theme="dark"] {
+    --background-color: #1a1a2e;
+    --text-color: #ffffff;
+    --container-bg: #242444;
+    --shadow-color: rgba(0, 0, 0, 0.3);
+    --button-bg: #4444cc;
+    --button-color: #ffffff;
+    --button-hover: #5555dd;
+    --glow-color: rgba(68, 68, 204, 0.3);
+    --footer-bg: rgba(36, 36, 68, 0.9);
+    --footer-text: #ffffff;
+    --home-button-bg: rgba(36, 36, 68, 0.9);
+    --home-button-color: #ffffff;
+}
+
 body {
     font-family: 'Arial', sans-serif;
     margin: 0;
@@ -8,6 +38,9 @@ body {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    transition: all 0.3s ease;
 }
 
 html {
@@ -120,6 +153,16 @@ nav ul li a:hover {
     display: flex;
     flex-direction: column;
     justify-content: center; /* Center content vertically */
+    background-color: var(--container-bg);
+    box-shadow: 0 0 20px var(--shadow-color),
+                0 0 60px var(--glow-color);
+    transition: all 0.3s ease;
+}
+
+.container:hover {
+    box-shadow: 0 0 25px var(--shadow-color),
+                0 0 80px var(--glow-color);
+    transform: translateY(-5px);
 }
 
 /* Header */
@@ -155,6 +198,18 @@ header p {
     border-radius: 25px;
     cursor: pointer;
     transition: background-color 0.3s ease;
+    background-color: var(--button-bg);
+    color: var(--button-color);
+}
+
+.button {
+    background-color: var(--button-bg);
+    color: var(--button-color);
+    border: none;
+    padding: 10px 20px;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: all 0.3s ease;
 }
 
 .button i {
@@ -163,6 +218,8 @@ header p {
 
 .button:hover, input[type="file"]:hover, input[type="submit"]:hover, button:hover {
     background-color: #4487d3; /* Bleu normal */
+    background-color: var(--button-hover);
+    transform: translateY(-2px);
 }
 
 input[type="range"] {
@@ -195,6 +252,25 @@ input[type="range"] {
     display: flex;
     align-items: center;
     z-index: 1000;
+}
+
+.home-button {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    background-color: var(--home-button-bg);
+    color: var(--home-button-color);
+    padding: 10px 20px;
+    border-radius: 25px;
+    text-decoration: none;
+    box-shadow: 0 0 10px var(--shadow-color);
+    transition: all 0.3s ease;
+    z-index: 1000;
+}
+
+.home-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 0 15px var(--shadow-color);
 }
 
 .home-button i {
@@ -232,6 +308,16 @@ footer {
     bottom: 0;
     left: 0;
     z-index: 1000;
+}
+
+.footer {
+    background-color: var(--footer-bg);
+    color: var(--footer-text);
+    text-align: center;
+    padding: 15px;
+    margin-top: auto;
+    width: 100%;
+    transition: all 0.3s ease;
 }
 
 .footer {
@@ -722,6 +808,8 @@ input[type="text"] {
     padding: 20px;
     border-radius: 10px;
     background-color: rgba(255, 255, 255, 0.9);
+    background-color: var(--container-bg);
+    transition: all 0.3s ease;
 }
 
 .weather-info {
@@ -780,10 +868,14 @@ input[type="text"] {
     padding: 10px 15px;
     cursor: pointer;
     border-bottom: 1px solid #eee;
+    background-color: var(--container-bg);
+    color: var(--text-color);
+    transition: all 0.3s ease;
 }
 
 .suggestion-item:hover {
-    background-color: #f5f5f5;
+    background-color: var(--button-bg);
+    color: var(--button-color);
 }
 
 .forecast-toggle {
@@ -800,10 +892,18 @@ input[type="text"] {
     border-radius: 20px;
     cursor: pointer;
     transition: background-color 0.3s;
+    background-color: var(--button-bg);
+    color: var(--button-color);
+    transition: all 0.3s ease;
 }
 
 .toggle-btn.active {
     background: #4487d3;
+}
+
+.forecast-toggle .toggle-btn:hover {
+    background-color: var(--button-hover);
+    transform: translateY(-2px);
 }
 
 .forecast-container {
@@ -963,4 +1063,87 @@ input[type="text"] {
 
 .min-temp {
     color: #3498db;
+}
+
+/* Ajout du bouton de thème */
+.theme-toggle {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: transparent;
+    border: none;
+    color: var(--text-color);
+    font-size: 1.5em;
+    cursor: pointer;
+    z-index: 1000;
+    padding: 10px;
+    border-radius: 50%;
+    width: 45px;
+    height: 45px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    background-color: var(--container-bg);
+    color: var(--text-color);
+    border: 2px solid var(--text-color);
+    transition: all 0.3s ease;
+}
+
+.theme-toggle:hover {
+    background-color: var(--button-bg);
+    color: var(--button-color);
+    transform: translateY(-2px);
+}
+
+/* Ajoutez ces règles dans votre fichier CSS */
+
+/* Style général pour les labels de formulaire */
+.form-group label {
+    color: var(--text-color);
+    transition: color 0.3s ease;
+}
+
+/* Style pour les inputs et textareas */
+.form-group input,
+.form-group textarea {
+    background-color: var(--container-bg);
+    color: var(--text-color);
+    border: 2px solid var(--text-color);
+    transition: all 0.3s ease;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    border-color: var(--button-bg);
+    box-shadow: 0 0 5px var(--glow-color);
+}
+
+/* Style pour les selects (pages devises) */
+select {
+    background-color: var(--container-bg);
+    color: var(--text-color);
+    border: 2px solid var(--text-color);
+    transition: all 0.3s ease;
+}
+
+select:focus {
+    border-color: var(--button-bg);
+    box-shadow: 0 0 5px var(--glow-color);
+}
+
+/* Style pour les placeholders */
+::placeholder {
+    color: var(--text-color);
+    opacity: 0.7;
+}
+
+/* Style pour les labels de la page password */
+.password-options label {
+    color: var(--text-color);
+}
+
+/* Style pour tout texte dans les formulaires */
+input, textarea, select, label, option {
+    color: var(--text-color);
 }
