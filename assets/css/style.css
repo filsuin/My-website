@@ -21,7 +21,7 @@
     --background-color: #080816;
     --gradient-start: #0d0d1f;
     --gradient-end: #1a1a35;
-    --text-color: #e0e0ff;
+    --text-color: #090982; /* Changer de #10107f à #e0e0ff pour une meilleure lisibilité */
     --container-bg: #1e1e3f;
     --shadow-color: rgba(0, 0, 0, 0.3);
     --button-bg: #3939cc;
@@ -442,6 +442,44 @@ footer {
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.password-result-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 20px;
+    padding: 15px;
+    border-radius: 8px;
+    background-color: var(--container-bg);
+    border: 2px solid var(--button-bg);
+}
+
+#passwordResult {
+    font-family: monospace;
+    font-size: 1.2em;
+    color: var(--text-color);
+    word-break: break-all;
+    text-align: center;
+    padding: 10px;
+    border-radius: 4px;
+    margin-right: 10px;
+    background-color: var(--input-bg);
+}
+
+#copyButton {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 1.5em;
+    color: var(--text-color);
+    transition: all 0.3s ease;
+}
+
+#copyButton:hover {
+    color: var(--button-hover);
+    transform: scale(1.1);
 }
 
 .password-result-container {
@@ -1184,4 +1222,19 @@ input, textarea, select, label, option {
 .project-card:hover {
     transform: translateY(-5px);
     box-shadow: 0 0 25px var(--glow-color);
+}
+
+.strength-bar {
+    height: 10px;
+    background-color: var(--input-bg);
+    border-radius: 5px;
+    overflow: hidden;
+    margin-bottom: 5px;
+    border: 1px solid var(--button-bg);
+}
+
+.strength-text {
+    font-size: 0.9em;
+    font-weight: bold;
+    text-shadow: 0 0 2px rgba(0, 0, 0, 0.5);
 }
