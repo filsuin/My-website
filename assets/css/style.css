@@ -21,7 +21,8 @@
     --background-color: #080816;
     --gradient-start: #0d0d1f;
     --gradient-end: #1a1a35;
-    --text-color: #090982; /* Changer de #10107f à #e0e0ff pour une meilleure lisibilité */
+    --text-color: #cfcff5;
+    --text-password-color: #0f0f9d ; /* Changer de #10107f à #e0e0ff pour une meilleure lisibilité */
     --container-bg: #1e1e3f;
     --shadow-color: rgba(0, 0, 0, 0.3);
     --button-bg: #3939cc;
@@ -459,7 +460,7 @@ footer {
 #passwordResult {
     font-family: monospace;
     font-size: 1.2em;
-    color: var(--text-color);
+    color: var(--text-password-color);
     word-break: break-all;
     text-align: center;
     padding: 10px;
