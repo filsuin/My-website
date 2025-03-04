@@ -8,7 +8,7 @@
             "type": "chrome",
             "request": "launch",
             "name": "Open index.html",
-            "file": "c:\\Users\\maxre\\OneDrive - GROUPE SCOLAIRE SAINT JOSEPH DIJON\\Documents\\Projet\\My-website\\index.html"
+            "file": "c:\\xampp\\htdocs\\My-website\\index.html"
         }
     ]
 }
