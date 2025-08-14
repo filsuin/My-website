@@ -59,8 +59,12 @@ html {
 nav {
     position: relative;
     width: 100%;
-    background: linear-gradient(to right, #27279c, #4487d3); /* Bleu marine à bleu normal */
+    background: linear-gradient(to right, #27279c, #4487d3);
     padding: 10px 20px;
+    display: flex;
+    align-items: stretch;
+    justify-content: flex-start;
+    min-height: 56px;
 }
 
 nav ul {
@@ -69,11 +73,13 @@ nav ul {
     padding: 0;
     display: flex;
     flex-direction: row;
-    justify-content: center;
+    justify-content: flex-start;
+    align-items: center;
+    flex: 1;
 }
 
 nav ul li {
-    margin: 0 15px;
+        align-self: center;
 }
 
 nav ul li a {
@@ -95,21 +101,23 @@ nav ul li a:hover {
     padding: 0;
     margin: 0;
     display: flex;
-    justify-content: center; /* Center the links */
+    justify-content: flex-start;
+    align-items: center;
     flex: 1;
 }
 
 .nav-buttons li {
-    margin: 0 10px;
+    margin: 0 4px;
 }
 
 .nav-buttons a {
     color: white;
     text-decoration: none;
-    padding: 10px 20px;
+    padding: 8px 14px;
     background-color: #444;
-    border-radius: 5px;
+    border-radius: 20px;
     transition: background-color 0.3s;
+    font-size: 16px;
 }
 
 .nav-buttons a:hover {
