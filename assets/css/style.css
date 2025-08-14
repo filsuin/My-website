@@ -1,3 +1,48 @@
+/* Lisibilité du lien Mentions Légales dans le footer */
+footer a, .footer a {
+    color: var(--button-color) !important;
+    background: var(--button-bg);
+    padding: 4px 14px;
+    border-radius: 18px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: background 0.2s, color 0.2s;
+    margin-left: 8px;
+}
+footer a:hover, .footer a:hover {
+    background: var(--button-hover);
+    color: var(--button-color);
+    text-decoration: underline;
+}
+footer a, .footer a {
+    color: var(--button-color) !important;
+    background: var(--button-bg);
+    padding: 4px 14px;
+    border-radius: 18px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: background 0.2s, color 0.2s;
+    margin-left: 8px;
+}
+footer a:hover, .footer a:hover {
+    background: var(--button-hover);
+    color: var(--button-color);
+    text-decoration: underline;
+}
+    color: var(--button-color) !important;
+    background: var(--button-bg);
+    padding: 4px 14px;
+    border-radius: 18px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: background 0.2s, color 0.2s;
+    margin-left: 8px;
+}
+.footer a:hover, footer a:hover {
+    background: var(--button-hover);
+    color: var(--button-color);
+    text-decoration: underline;
+}
 /* Styles généraux */
 :root[data-theme="light"] {
     --background-color: #9cc0ef;
