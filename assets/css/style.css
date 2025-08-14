@@ -665,12 +665,22 @@ h1 {
 }
 
 input[type="text"] {
-    width: calc(100% - 20px); /* Adjust width to fit within container */
-    padding: 10px;
-    margin: 10px auto; /* Center the input */
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    box-sizing: border-box; /* Ensure padding and border are included in width */
+    width: calc(100% - 20px);
+    padding: 12px 16px;
+    margin: 10px auto;
+    border: 2px solid var(--button-bg);
+    border-radius: 8px;
+    box-sizing: border-box;
+    background-color: var(--input-bg);
+    color: var(--text-color);
+    font-size: 1.1em;
+    transition: border-color 0.3s, background 0.3s, color 0.3s;
+}
+input[type="text"]:focus {
+    border-color: var(--button-hover);
+    outline: none;
+    background-color: #fff2;
+}
 }
 
 @media (max-width: 768px) {
