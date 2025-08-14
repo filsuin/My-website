@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="fr" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Convertisseur de Documents</title>
+    <link rel="stylesheet" href="assets/CSS/style.css?v=2">
+    <link rel="icon" type="image/x-icon" href="assets/Images/favicon.ico">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <button id="themeToggle" class="theme-toggle">
+        <i class="fas fa-moon"></i>
+    </button>
+    <a href="index.html" class="home-button"><i class="fas fa-home"></i> Retour à l'accueil</a>
+    <div class="wrapper" style="margin-top: 140px;">
+        <div class="container">
+            <h1>Convertisseur de Documents</h1>
+            <form id="convertForm">
+                <div class="form-group">
+                    <label for="file">Télécharger un document :</label>
+                    <input type="file" id="file" name="file" required accept=".doc,.docx,.odt,.rtf,.txt,.pdf">
+                </div>
+                <div class="form-group">
+                    <label for="format">Format de sortie :</label>
+                    <select id="format" name="format" required>
+                        <option value="pdf">PDF</option>
+                        <option value="doc">DOC</option>
+                        <option value="docx">DOCX</option>
+                        <option value="odt">ODT</option>
+                        <option value="rtf">RTF</option>
+                        <option value="txt">TXT</option>
+                    </select>
+                </div>
+                <button type="submit">Convertir</button>
+            </form>
+            <div id="result" style="margin-top:20px;"></div>
+            <script>
+            document.getElementById('convertForm').addEventListener('submit', async function(e) {
+                e.preventDefault();
+                const form = e.target;
+                const fileInput = form.file;
+                const format = form.format.value;
+                const resultDiv = document.getElementById('result');
+                resultDiv.textContent = 'Conversion en cours...';
+                const formData = new FormData();
+                formData.append('file', fileInput.files[0]);
+                formData.append('format', format);
+                try {
+                    const response = await fetch('http://[ADRESSE_DE_TON_NAS]:5000/convert', {
+                        method: 'POST',
+                        body: formData
+                    });
+                    if (!response.ok) {
+                        const err = await response.json();
+                        resultDiv.textContent = err.error || 'Erreur lors de la conversion.';
+                        return;
+                    }
+                    const blob = await response.blob();
+                    const url = window.URL.createObjectURL(blob);
+                    const a = document.createElement('a');
+                    a.href = url;
+                    a.download = fileInput.files[0].name.replace(/\.[^.]+$/, '') + '.' + format;
+                    a.textContent = 'Télécharger le fichier converti';
+                    resultDiv.innerHTML = '';
+                    resultDiv.appendChild(a);
+                } catch (err) {
+                    resultDiv.textContent = 'Erreur lors de la conversion.';
+                }
+            });
+            </script>
+        </div>
+    </div>
+    <footer class="footer">
+        <p>&copy; 2025 Tous droits réservés.</p>
+        <p><a href="mentions-legales.html">Mentions Légales</a></p>
+    </footer>
+    <script src="assets/js/theme.js"></script>
+</body>
+</html>
