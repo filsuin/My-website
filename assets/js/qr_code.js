@@ -4,6 +4,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     document.getElementById("generate-btn").addEventListener("click", function () {
         const url = document.getElementById("url-input").value;
+        const bgChoice = document.querySelector('input[name="qr-bg"]:checked').value;
 
         if (!url) {
             alert("Please enter a valid URL.");
@@ -13,10 +14,20 @@ document.addEventListener("DOMContentLoaded", () => {
         const qrCodeContainer = document.getElementById("qr-code");
         qrCodeContainer.innerHTML = ""; // Clear previous QR code
 
+        // Définir les couleurs selon le choix
+        let colorDark = "#000000";
+        let colorLight = "#ffffff";
+        if (bgChoice === "black") {
+            colorDark = "#ffffff";
+            colorLight = "#000000";
+        }
+
         new QRCode(qrCodeContainer, {
             text: url,
             width: 256,
             height: 256,
+            colorDark: colorDark,
+            colorLight: colorLight
         });
 
         // Show download link after QR code generation

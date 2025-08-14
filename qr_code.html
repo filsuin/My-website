@@ -18,6 +18,14 @@
         <div class="container">
             <h1>QR Code Generator</h1>
             <input type="text" id="url-input" placeholder="Enter URL">
+            <div style="margin: 1em 0;">
+                <label style="margin-right:1em;">
+                    <input type="radio" name="qr-bg" value="white" checked> Fond blanc
+                </label>
+                <label>
+                    <input type="radio" name="qr-bg" value="black"> Fond noir
+                </label>
+            </div>
             <button id="generate-btn" class="button">Generate QR Code</button>
             <div id="qr-code" class="qr-code-container"></div>
             <a id="download-link" href="#" download="qrcode.png" class="button">Download QR Code</a>
