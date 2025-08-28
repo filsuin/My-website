@@ -1,3 +1,53 @@
+/* Cookie consent banner */
+#cookie-banner {
+    position: fixed;
+    left: 0; right: 0; top: 0; bottom: 0;
+    background: transparent;
+    color: #fff;
+    z-index: 9999;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 0;
+}
+.cookie-modal {
+    background: rgba(34, 34, 34, 0.35);
+    border-radius: 12px;
+    box-shadow: 0 0 16px #0008;
+    padding: 24px 32px 16px 32px;
+    margin: 0 0 0 0;
+    max-width: 400px;
+    width: 100%;
+    text-align: left;
+    backdrop-filter: blur(16px) saturate(160%);
+    -webkit-backdrop-filter: blur(16px) saturate(160%);
+    border: 1px solid rgba(255,255,255,0.12);
+}
+.cookie-modal h2 {
+    margin-top: 0;
+    font-size: 1.3em;
+}
+.cookie-modal button[type="submit"] {
+    margin-top: 16px;
+    background: var(--button-bg, #27279c);
+    color: var(--button-color, #fff);
+    border: none;
+    border-radius: 8px;
+    padding: 8px 20px;
+    font-size: 1em;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+.cookie-modal button[type="submit"]:hover {
+    background: var(--button-hover, #1a1a7a);
+}
+.cookie-modal label {
+    display: block;
+    margin: 8px 0 0 0;
+    font-size: 1em;
+    cursor: pointer;
+}
 /* Lisibilité du lien Mentions Légales dans le footer */
 footer a, .footer a {
     color: var(--button-color) !important;
@@ -29,20 +79,7 @@ footer a:hover, .footer a:hover {
     color: var(--button-color);
     text-decoration: underline;
 }
-    color: var(--button-color) !important;
-    background: var(--button-bg);
-    padding: 4px 14px;
-    border-radius: 18px;
-    font-weight: 600;
-    text-decoration: none;
-    transition: background 0.2s, color 0.2s;
-    margin-left: 8px;
-}
-.footer a:hover, footer a:hover {
-    background: var(--button-hover);
-    color: var(--button-color);
-    text-decoration: underline;
-}
+/* Suppression du bloc orphelin et doublons inutiles */
 /* Styles généraux */
 :root[data-theme="light"] {
     --background-color: #9cc0ef;
@@ -61,9 +98,9 @@ footer a:hover, .footer a:hover {
     --home-button-color: #27279c;
     --input-bg: #ffffff;
 }
-
 :root[data-theme="dark"] {
     --background-color: #080816;
+/* accolade orpheline supprimée */
     --gradient-start: #0d0d1f;
     --gradient-end: #1a1a35;
     --text-color: #cfcff5;
@@ -80,9 +117,9 @@ footer a:hover, .footer a:hover {
     --home-button-color: #ffffff;
     --input-bg: #242450;
 }
-
 body {
     font-family: 'Arial', sans-serif;
+/* accolade orpheline supprimée */
     margin: 0;
     padding: 0;
     background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
@@ -353,7 +390,6 @@ input[type="range"]::-ms-tooltip {
 }
 input[type="range"]::-moz-focus-outer {
     border: 0;
-}
 }
 
 #copyButton {
@@ -725,7 +761,6 @@ input[type="text"]:focus {
     border-color: var(--button-hover);
     outline: none;
     background-color: #fff2;
-}
 }
 
 @media (max-width: 768px) {

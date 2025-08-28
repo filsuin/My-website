@@ -8,8 +8,8 @@
             "type": "chrome",
             "request": "launch",
             "name": "Open index.html",
-            //"file": "C:\\Users\\REMONNAY Max\\Documents\\Code\\My-website\\index.html"
-            "file": "C:\\xampp\\htdocs\\My-website\\index.html"
+            "file": "C:\\Users\\REMONNAY Max\\Documents\\Code\\My-website\\index.html"
+            //"file": "C:\\xampp\\htdocs\\My-website\\index.html"
         }
     ]
 }
