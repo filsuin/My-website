@@ -17,7 +17,54 @@
     <div class="wrapper">
         <div class="container">
             <h1>QR Code Generator</h1>
-            <input type="text" id="url-input" placeholder="Enter URL">
+            <div style="margin-bottom:1em;">
+                <label for="qr-type">Type de QR Code :</label>
+                <select id="qr-type">
+                    <option value="url">Lien</option>
+                    <option value="vcard">vCard (Contact)</option>
+                </select>
+            </div>
+            <div id="qr-url-form">
+                <input type="text" id="url-input" placeholder="Enter URL">
+            </div>
+            <form id="qr-vcard-form" style="display:none;">
+                <div class="form-group">
+                    <label for="lastname">Nom</label>
+                    <input type="text" id="lastname" name="lastname" required>
+                </div>
+                <div class="form-group">
+                    <label for="firstname">Prénom</label>
+                    <input type="text" id="firstname" name="firstname" required>
+                </div>
+                <div class="form-group">
+                    <label for="phone_mobile">Téléphone portable</label>
+                    <input type="tel" id="phone_mobile" name="phone_mobile">
+                </div>
+                <div class="form-group">
+                    <label for="phone_fixe">Téléphone fixe</label>
+                    <input type="tel" id="phone_fixe" name="phone_fixe">
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email">
+                </div>
+                <div class="form-group">
+                    <label for="org">Organisation</label>
+                    <input type="text" id="org" name="org">
+                </div>
+                <div class="form-group">
+                    <label for="title">Titre/Profession</label>
+                    <input type="text" id="title" name="title">
+                </div>
+                <div class="form-group">
+                    <label for="website">Site web de l'entreprise</label>
+                    <input type="url" id="website" name="website">
+                </div>
+                <div class="form-group">
+                    <label for="address">Adresse</label>
+                    <input type="text" id="address" name="address" placeholder="N°, rue, ville, code postal, pays">
+                </div>
+            </form>
             <div style="margin: 1em 0;">
                 <label style="margin-right:1em;">
                     <input type="radio" name="qr-bg" value="white" checked> Fond blanc
@@ -26,7 +73,7 @@
                     <input type="radio" name="qr-bg" value="black"> Fond noir
                 </label>
             </div>
-            <button id="generate-btn" class="button">Generate QR Code</button>
+            <button id="generate-btn" class="button">Générer le QR Code</button>
             <div id="qr-code" class="qr-code-container"></div>
             <a id="download-link" href="#" download="qrcode.png" class="button">Download QR Code</a>
         </div>

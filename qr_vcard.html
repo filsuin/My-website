@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="fr" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QR Code vCard Dynamique</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="index.html" class="home-button"><i class="fas fa-home"></i>Accueil</a>
+            <button class="menu-toggle" id="mobile-menu">
+                <i class="fas fa-bars"></i>
+            </button>
+            <!-- nav-buttons déplacé en dehors du nav pour overlay mobile -->
+        </nav>
+    </header>
+    <div class="wrapper">
+        <div class="container">
+            <h1>QR Code vCard Dynamique</h1>
+            <form id="vcardForm">
+                <div class="form-group">
+                    <label for="name">Nom complet</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="phone">Téléphone</label>
+                    <input type="tel" id="phone" name="phone">
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email">
+                </div>
+                <div class="form-group">
+                    <label for="org">Organisation</label>
+                    <input type="text" id="org" name="org">
+                </div>
+                <div class="form-group">
+                    <label for="title">Titre/Profession</label>
+                    <input type="text" id="title" name="title">
+                </div>
+                <button type="submit" class="button">Générer le QR Code</button>
+            </form>
+            <div id="previewContainer" style="margin-top:30px; text-align:center;">
+                <div id="qrcode"></div>
+            </div>
+        </div>
+    </div>
+    <footer class="footer">
+        <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; width: 100%;">
+            <p style="margin: 0; font-weight: 500;">&copy; 2025 Tous droits réservés.</p>
+            <p style="margin: 4px 0 0 0;"><a href="mentions-legales.html">Mentions Légales</a></p>
+        </div>
+    </footer>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+    <script src="assets/js/qr_vcard.js"></script>
+    <script src="assets/js/script.js"></script>
+    <script src="assets/js/theme.js"></script>
+    <script src="assets/js/cookie_consent.js"></script>
+</body>
+</html>
