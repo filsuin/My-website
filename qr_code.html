@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>QR Code Generator</title>
-    <link rel="stylesheet" href="assets/CSS/style.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/qr-code-styling@1.5.0/lib/qr-code-styling.js"></script>
     <!-- Font Awesome CDN -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
@@ -16,66 +16,70 @@
     <a href="index.html" class="home-button"><i class="fas fa-home"></i> Retour à l'accueil</a>
     <div class="wrapper">
         <div class="container">
-            <h1>QR Code Generator</h1>
-            <div style="margin-bottom:1em;">
-                <label for="qr-type">Type de QR Code :</label>
-                <select id="qr-type">
-                    <option value="url">Lien</option>
-                    <option value="vcard">vCard (Contact)</option>
-                </select>
-            </div>
-            <div id="qr-url-form">
-                <input type="text" id="url-input" placeholder="Enter URL">
-            </div>
-            <form id="qr-vcard-form" style="display:none;">
-                <div class="form-group">
-                    <label for="lastname">Nom</label>
-                    <input type="text" id="lastname" name="lastname" required>
+            <h1>QR Code Dynamique</h1>
+            <form id="qrForm">
+                <div style="margin-bottom:1em;">
+                    <label for="qr-type">Type de QR Code :</label>
+                    <select id="qr-type">
+                        <option value="url">Lien</option>
+                        <option value="vcard">vCard (Contact)</option>
+                    </select>
                 </div>
-                <div class="form-group">
-                    <label for="firstname">Prénom</label>
-                    <input type="text" id="firstname" name="firstname" required>
+                <div id="url-fields">
+                    <input type="text" id="url-input" placeholder="Entrez l'URL">
                 </div>
-                <div class="form-group">
-                    <label for="phone_mobile">Téléphone portable</label>
-                    <input type="tel" id="phone_mobile" name="phone_mobile">
+                <div id="vcard-fields" style="display:none;">
+                    <div class="form-group">
+                        <label for="address">Adresse</label>
+                        <input type="text" id="address" name="address" placeholder="N°, rue, ville, code postal, pays">
+                    </div>
+                    <div class="form-group">
+                        <label for="lastname">Nom</label>
+                        <input type="text" id="lastname" name="lastname" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="firstname">Prénom</label>
+                        <input type="text" id="firstname" name="firstname" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone_mobile">Téléphone portable</label>
+                        <input type="tel" id="phone_mobile" name="phone_mobile">
+                    </div>
+                    <div class="form-group">
+                        <label for="phone_fixe">Téléphone fixe</label>
+                        <input type="tel" id="phone_fixe" name="phone_fixe">
+                    </div>
+                    <div class="form-group">
+                        <label for="website">Site web</label>
+                        <input type="url" id="website" name="website">
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email">
+                    </div>
+                    <div class="form-group">
+                        <label for="org">Organisation</label>
+                        <input type="text" id="org" name="org">
+                    </div>
+                    <div class="form-group">
+                        <label for="title">Titre/Profession</label>
+                        <input type="text" id="title" name="title">
+                    </div>
                 </div>
-                <div class="form-group">
-                    <label for="phone_fixe">Téléphone fixe</label>
-                    <input type="tel" id="phone_fixe" name="phone_fixe">
+                <div style="margin: 1em 0;">
+                    <label style="margin-right:1em;">
+                        <input type="radio" name="qr-bg" value="white" checked> Fond blanc
+                    </label>
+                    <label>
+                        <input type="radio" name="qr-bg" value="black"> Fond noir
+                    </label>
                 </div>
-                <div class="form-group">
-                    <label for="email">Email</label>
-                    <input type="email" id="email" name="email">
-                </div>
-                <div class="form-group">
-                    <label for="org">Organisation</label>
-                    <input type="text" id="org" name="org">
-                </div>
-                <div class="form-group">
-                    <label for="title">Titre/Profession</label>
-                    <input type="text" id="title" name="title">
-                </div>
-                <div class="form-group">
-                    <label for="website">Site web de l'entreprise</label>
-                    <input type="url" id="website" name="website">
-                </div>
-                <div class="form-group">
-                    <label for="address">Adresse</label>
-                    <input type="text" id="address" name="address" placeholder="N°, rue, ville, code postal, pays">
-                </div>
+                <button type="submit" id="generate-btn" class="button">Générer le QR Code</button>
             </form>
-            <div style="margin: 1em 0;">
-                <label style="margin-right:1em;">
-                    <input type="radio" name="qr-bg" value="white" checked> Fond blanc
-                </label>
-                <label>
-                    <input type="radio" name="qr-bg" value="black"> Fond noir
-                </label>
+            <div id="previewContainer" style="margin-top:30px; text-align:center;">
+                <div id="qrcode"></div>
+                <button id="downloadQrBtn" class="button" style="margin-top:15px;display:none;">Télécharger le QR Code</button>
             </div>
-            <button id="generate-btn" class="button">Générer le QR Code</button>
-            <div id="qr-code" class="qr-code-container"></div>
-            <a id="download-link" href="#" download="qrcode.png" class="button">Download QR Code</a>
         </div>
     </div>
     <footer class="footer">
