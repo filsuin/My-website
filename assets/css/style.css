@@ -1,3 +1,46 @@
+@media (max-width: 768px) {
+    .nav-buttons {
+        display: flex;
+        flex-direction: column;
+        position: fixed !important;
+        top: 0; left: -80vw; /* caché par défaut */
+        width: 80vw; height: 100vh;
+        background: #181a2a !important;
+        box-shadow: 2px 0 16px #0008;
+        justify-content: flex-start;
+        align-items: flex-start;
+        padding: 40px 0 0 0;
+        z-index: 9999 !important;
+        transition: left 0.3s cubic-bezier(.4,0,.2,1);
+        border-top-right-radius: 18px;
+        border-bottom-right-radius: 18px;
+        overflow-y: auto;
+    }
+    .nav-buttons.active {
+        left: 0 !important;
+    }
+    .nav-buttons li {
+        width: 100%;
+        margin: 0;
+        text-align: left;
+        padding: 0;
+    }
+    .nav-buttons a {
+        display: block;
+        width: 100%;
+        padding: 18px 32px;
+        font-size: 1.2em;
+        border-radius: 0;
+        background: none !important;
+        color: var(--text-color, #fff) !important;
+        border-bottom: 1px solid #2224;
+        text-align: left;
+    }
+    .nav-buttons a:hover {
+        background: #27279c !important;
+        color: #fff !important;
+    }
+}
 .nav-buttons {
         background: rgba(34, 34, 34, 0.07) !important;
         box-shadow: 0 2px 8px var(--glow-color);
@@ -89,13 +132,18 @@ footer {
     border-radius: 12px;
     box-shadow: 0 0 10px #0002;
     padding: 24px 32px 16px 32px;
-    margin: 0 0 0 0;
+    margin: 0;
     max-width: 400px;
     width: 100%;
     text-align: left;
     backdrop-filter: blur(16px) saturate(160%);
     -webkit-backdrop-filter: blur(16px) saturate(160%);
     border: 1px solid rgba(255,255,255,0.04);
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 4000;
 }
 .cookie-modal h2 {
     margin-top: 0;
@@ -259,7 +307,7 @@ nav ul li a:hover {
     position: absolute;
     left: 20px;
     top: 20px;
-    z-index: 1000;
+    /* z-index supprimé */
     background: none;
     border: none;
     padding: 10px;
@@ -538,36 +586,14 @@ input[type="range"]::-moz-focus-outer {
         display: none;
         flex-direction: column;
         width: 100%;
-    }
-
-    .nav-buttons li {
-        margin: 10px 0;
-        text-align: center;
-    }
-
-    .menu-toggle {
-        display: block;
-        position: fixed;
-        top: 20px;
-        left: 20px;
-    }
-
-    .nav-buttons.active {
-        display: flex;
-    }
-
-    .nav-buttons {
-        display: none;
         position: fixed;
         top: 0;
         left: 0;
-        width: 100%;
         height: 100vh;
-        background-color: rgba(0, 0, 128, 0.95); /* Bleu marine */
-        flex-direction: column;
+        background-color: rgba(0, 0, 0, 0.95);
         justify-content: center;
         align-items: center;
-        z-index: 999;
+        z-index: 3000; /* Très au-dessus de tout */
     }
 
     .nav-buttons.active {
@@ -576,6 +602,7 @@ input[type="range"]::-moz-focus-outer {
 
     .nav-buttons li {
         margin: 15px 0;
+        text-align: center;
     }
 
     .nav-buttons a {
@@ -584,18 +611,22 @@ input[type="range"]::-moz-focus-outer {
         margin: 0 auto;
     }
 
-    .home-button {
-        top: 65px; /* Augmenté de 55px à 65px */
+    .menu-toggle {
+        display: block;
+        position: fixed;
+        top: 20px;
+        left: 20px;
+        z-index: 3100; /* Encore plus haut */
     }
 
     .home-button {
+        top: 65px;
         position: fixed;
-        top: 55px;
         left: 15px;
     }
 
     .container {
-        margin-top: 180px; /* Décale encore plus sur mobile */
+        margin-top: 80px; /* Ajustement pour l'espace */
         width: 95%;
         padding: 15px;
     }
