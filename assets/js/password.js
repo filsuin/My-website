@@ -35,13 +35,11 @@ function generatePassword() {
     document.getElementById('copyButton').style.display = 'inline-block';
 }
 
-
 ['length', 'lowercase', 'uppercase', 'numbers', 'special'].forEach(id => {
     document.getElementById(id).addEventListener('input', generatePassword);
     document.getElementById(id).addEventListener('change', generatePassword);
 });
 
-// Génère le mot de passe dès le chargement
 window.addEventListener('DOMContentLoaded', generatePassword);
 
 
