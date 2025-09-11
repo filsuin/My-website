@@ -1,6 +1,5 @@
-document.getElementById('passwordForm').addEventListener('submit', function(event) {
-    event.preventDefault();
 
+function generatePassword() {
     const length = document.getElementById('length').value;
     const includeLowercase = document.getElementById('lowercase').checked;
     const includeUppercase = document.getElementById('uppercase').checked;
@@ -19,7 +18,9 @@ document.getElementById('passwordForm').addEventListener('submit', function(even
     if (includeSpecial) allChars += specialChars;
 
     if (allChars === '') {
-        alert('Veuillez sélectionner au moins un type de caractère.');
+        document.getElementById('passwordResult').textContent = '';
+        updatePasswordStrength('');
+        document.getElementById('copyButton').style.display = 'none';
         return;
     }
 
@@ -29,18 +30,24 @@ document.getElementById('passwordForm').addEventListener('submit', function(even
         password += allChars[randomIndex];
     }
 
-    const passwordResult = document.getElementById('passwordResult');
-    passwordResult.textContent = password;
-
-    // Mettre à jour la force du mot de passe
+    document.getElementById('passwordResult').textContent = password;
     updatePasswordStrength(password);
+    document.getElementById('copyButton').style.display = 'inline-block';
+}
 
-    const copyButton = document.getElementById('copyButton');
-    copyButton.style.display = 'inline-block';
+
+['length', 'lowercase', 'uppercase', 'numbers', 'special'].forEach(id => {
+    document.getElementById(id).addEventListener('input', generatePassword);
+    document.getElementById(id).addEventListener('change', generatePassword);
 });
+
+// Génère le mot de passe dès le chargement
+window.addEventListener('DOMContentLoaded', generatePassword);
+
 
 document.getElementById('copyButton').addEventListener('click', function() {
     const passwordResult = document.getElementById('passwordResult').textContent;
+    if (!passwordResult) return;
     navigator.clipboard.writeText(passwordResult).then(function() {
         alert('Mot de passe copié dans le presse-papiers!');
     }, function(err) {
